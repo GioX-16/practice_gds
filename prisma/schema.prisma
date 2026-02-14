@@ -15,19 +15,19 @@ datasource db {
 
 
 model User {
-  id              Int                 @id @default(autoincrement())
-  createdAt       DateTime            @default(now())
-  updatedAt       DateTime            @updatedAt
-  name            String
-  username        String              @unique
-  email           String              @unique
-  hashedPassword  String?
-  role            String              @default("user")
-  sessions        Session[]
-  calendars       ConnectedCalendar[]
-  Meeting         Meeting[]
-  Schedule        Schedule[]
-  DefaultCalendar DefaultCalendar[]
+  id  Int @id @default(autoincrement())
+  email String @unique  
+  name String?
+  password String
+  telephone String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt 
+  role Role @default(USER)
+}
+
+enum Role {
+  USER
+  ADMIN
 }
 
 model DefaultCalendar {
